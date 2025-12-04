@@ -99,4 +99,3 @@ xcodebuild -scheme SwiftDB -project SwiftDB.xcodeproj
 - **UI Tests**: `SwiftDBUITests/` for UI automation tests
 - Tests use `@testable import SwiftDB` to access internal members
 - Features to add: connection manager, ability to open a connection with a config file (xml or json) or command line parameters
-- All screenshots are stored in the `issues/` folder (not tracked in git)
