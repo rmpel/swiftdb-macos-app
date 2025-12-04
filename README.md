@@ -2,6 +2,12 @@
 
 A full-featured database management application for macOS, built with SwiftUI.
 
+## ⚠️ Security Notice
+
+**Passwords are currently stored in plain text.** Connection credentials are saved using SwiftData in an unencrypted SQLite database. See **[SECURITY.md](SECURITY.md)** for details and recommended security practices.
+
+**For production use**: Use SSH keys, system SSH config, or don't save passwords.
+
 ## Features
 
 ### Database Connectivity
@@ -23,25 +29,28 @@ A full-featured database management application for macOS, built with SwiftUI.
 
 ### User Interface
 
-#### Three-Panel Layout
+#### Main Layout
 1. **Left Sidebar**: Hierarchical database and table browser
    - Expandable database list
    - Table listing per database
-   - Double-click to open tables
+   - Double-click to open tables in tabs
+   - Right-click for table actions
 
 2. **Center Panel**: Tabbed interface for open tables
    - Multiple tables can be open simultaneously
-   - Each table has three sub-tabs:
-     - **Information**: Table metadata (name, row count, engine, collation)
-     - **Structure**: Column definitions, indexes, foreign keys
-     - **Content**: Table data in a grid view with pagination
+   - Close tabs with ⌘W
+   - Each table has four sub-tabs:
+     - **Content**: Editable data grid with filtering, sorting, and pagination
+     - **Information**: Table metadata (name, row count, engine, collation, comment)
+     - **Structure**: Column definitions (indexes and foreign keys temporarily disabled)
+     - **SQL Console**: Execute custom queries on the table
 
-3. **Bottom Console**: SQL query execution
-   - Multi-line SQL editor
+3. **Bottom Panel**: Activity Log & SQL Console
+   - **Activity Log**: Color-coded connection diagnostics (info, success, warning, error)
+   - **SQL Console**: Global SQL editor for executing queries
    - Execute queries with ⌘↩
    - View results in grid format
    - Query execution time tracking
-   - Error display
 
 ### Connection Management
 - Save and manage multiple database connections
@@ -93,19 +102,31 @@ SwiftDB/
 ├── Models/
 │   ├── ConnectionSettings.swift    # Connection configuration (SwiftData)
 │   ├── DatabaseSchema.swift        # Database metadata structures
-│   └── TabManager.swift             # Tab state management
+│   ├── TabManager.swift            # Tab state management
+│   ├── TableEditManager.swift      # Table editing state
+│   ├── FilterModels.swift          # Filtering data structures
+│   ├── ActivityLog.swift           # Connection activity logging
+│   └── Preferences.swift           # App preferences
 ├── Services/
-│   ├── DatabaseConnection.swift    # Database operations
-│   └── SSHTunnel.swift             # SSH tunnel management
+│   ├── DatabaseConnection.swift    # Database orchestration
+│   ├── MySQLConnector.swift        # MySQL driver (MySQLNIO)
+│   ├── PostgreSQLConnector.swift   # PostgreSQL driver (PostgresNIO)
+│   ├── SQLiteConnector.swift       # SQLite driver (SQLite.swift)
+│   ├── SSHTunnel.swift             # SSH tunnel management
+│   └── CLIArguments.swift          # Command-line argument parsing
 └── Views/
-    ├── MainView.swift               # Root layout
-    ├── SidebarView.swift            # Database/table browser
-    ├── TabContentView.swift         # Tab management
-    ├── TableInformationView.swift   # Table info display
-    ├── TableStructureView.swift     # Schema viewer
-    ├── TableDataView.swift          # Data grid
-    ├── ConsoleView.swift            # SQL console
-    └── ConnectionSheetView.swift    # Connection form
+    ├── MainView.swift              # Root layout with sidebar
+    ├── SidebarView.swift           # Database/table browser
+    ├── TabContentView.swift        # Tab management
+    ├── TableInformationView.swift  # Table metadata display
+    ├── TableStructureView.swift    # Column/index/FK viewer
+    ├── TableDataView.swift         # Data grid with editing
+    ├── ConsoleView.swift           # SQL console
+    ├── ConnectionSheetView.swift   # Connection form
+    ├── ConnectionManagerView.swift # Saved connections list
+    ├── ActivityLogView.swift       # Connection activity viewer
+    ├── FilterBarView.swift         # Column filtering UI
+    └── SettingsView.swift          # App settings
 ```
 
 ### Key Technologies

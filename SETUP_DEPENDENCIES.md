@@ -32,7 +32,16 @@ The SwiftDB application now uses **real database connectivity** via MySQLNIO and
    - Select **PostgresNIO** from the products list
    - Click **"Add Package"**
 
-5. **Build the Project**
+5. **Add SQLite.swift**
+   - Click the **"+"** button again
+   - In the search field, paste: `https://github.com/stephencelis/SQLite.swift.git`
+   - Click **"Add Package"**
+   - Select version: **"Up to Next Major Version"** with **0.15.0**
+   - Click **"Add Package"** again
+   - Select **SQLite** from the products list
+   - Click **"Add Package"**
+
+6. **Build the Project**
    - Press **⌘B** or go to **Product > Build**
    - Xcode will download and compile the dependencies
    - This may take a few minutes on the first build
@@ -42,19 +51,21 @@ The SwiftDB application now uses **real database connectivity** via MySQLNIO and
 If you're using Xcode 15 or later:
 
 1. Go to **File > Add Package Dependencies...**
-2. Add both packages:
+2. Add all three packages:
    - `https://github.com/vapor/mysql-nio.git` (version 1.7.0 or later)
    - `https://github.com/vapor/postgres-nio.git` (version 1.18.0 or later)
+   - `https://github.com/stephencelis/SQLite.swift.git` (version 0.15.0 or later)
 
 ## What's Changed
 
 The application now:
-- ✅ Connects to **real MySQL** and **PostgreSQL** databases
+- ✅ Connects to **real MySQL**, **PostgreSQL**, and **SQLite** databases
 - ✅ Executes **actual SQL queries** on your database server
-- ✅ Displays **real table structures** with columns, indexes, and foreign keys
+- ✅ Displays **real table structures** with columns
 - ✅ Shows **actual data** from your tables
 - ✅ Supports **SSH tunneling** for remote connections
 - ✅ Handles **pagination**, **sorting**, and **filtering** with real queries
+- ✅ Supports **in-place cell editing** with commit/rollback functionality
 
 ## Testing the Connection
 
@@ -64,6 +75,7 @@ After adding dependencies and building:
 2. Enter your database credentials:
    - **MySQL**: Usually port 3306
    - **PostgreSQL**: Usually port 5432
+   - **SQLite**: Browse to your .sqlite, .db, or .sqlite3 file
 3. Click **"Connect"**
 4. The app will now connect to your **actual database** and show **real data**
 
@@ -94,5 +106,6 @@ If packages fail to resolve:
 
 - **MySQLNIO** (1.7.0+): Non-blocking, event-driven MySQL client
 - **PostgresNIO** (1.18.0+): Non-blocking, event-driven PostgreSQL client
-- Both are built on **Swift NIO** (Network framework)
-- Both support async/await natively
+- **SQLite.swift** (0.15.0+): Type-safe SQLite3 wrapper with query builder
+- MySQLNIO and PostgresNIO are built on **Swift NIO** (Network framework)
+- All support async/await natively
