@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E9BC0B52EE06C75006D2E0B /* MySQLNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9BC0B42EE06C75006D2E0B /* MySQLNIO */; };
 		1E9BC0B82EE06CDA006D2E0B /* PostgresNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9BC0B72EE06CDA006D2E0B /* PostgresNIO */; };
-		1EC023072EE1C8C000D96AD1 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 1EC023062EE1C8C000D96AD1 /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +32,6 @@
 		1E42DE422EE05C920028E5A6 /* SwiftDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E42DE512EE05C940028E5A6 /* SwiftDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E42DE5B2EE05C940028E5A6 /* SwiftDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1234567890ABCDEF1234567 /* SwiftDB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftDB.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -59,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC023072EE1C8C000D96AD1 /* SQLite in Frameworks */,
 				1E9BC0B82EE06CDA006D2E0B /* PostgresNIO in Frameworks */,
 				1E9BC0B52EE06C75006D2E0B /* MySQLNIO in Frameworks */,
 			);
@@ -85,7 +82,6 @@
 		1E42DE392EE05C920028E5A6 = {
 			isa = PBXGroup;
 			children = (
-				E1234567890ABCDEF1234567 /* SwiftDB.entitlements */,
 				1E42DE442EE05C920028E5A6 /* SwiftDB */,
 				1E42DE542EE05C940028E5A6 /* SwiftDBTests */,
 				1E42DE5E2EE05C940028E5A6 /* SwiftDBUITests */,
@@ -125,7 +121,6 @@
 			packageProductDependencies = (
 				1E9BC0B42EE06C75006D2E0B /* MySQLNIO */,
 				1E9BC0B72EE06CDA006D2E0B /* PostgresNIO */,
-				1EC023062EE1C8C000D96AD1 /* SQLite */,
 			);
 			productName = SwiftDB;
 			productReference = 1E42DE422EE05C920028E5A6 /* SwiftDB.app */;
@@ -212,7 +207,6 @@
 			packageReferences = (
 				1E9BC0B32EE06C75006D2E0B /* XCRemoteSwiftPackageReference "mysql-nio" */,
 				1E9BC0B62EE06CDA006D2E0B /* XCRemoteSwiftPackageReference "postgres-nio" */,
-				1EC023052EE1C8C000D96AD1 /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E42DE432EE05C920028E5A6 /* Products */;
@@ -414,19 +408,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = NO;
-				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
-				ENABLE_RESOURCE_ACCESS_USB = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -454,19 +438,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = NO;
-				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
-				ENABLE_RESOURCE_ACCESS_USB = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -620,14 +594,6 @@
 				minimumVersion = 1.18.0;
 			};
 		};
-		1EC023052EE1C8C000D96AD1 /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.15.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -640,11 +606,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E9BC0B62EE06CDA006D2E0B /* XCRemoteSwiftPackageReference "postgres-nio" */;
 			productName = PostgresNIO;
-		};
-		1EC023062EE1C8C000D96AD1 /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1EC023052EE1C8C000D96AD1 /* XCRemoteSwiftPackageReference "SQLite" */;
-			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
