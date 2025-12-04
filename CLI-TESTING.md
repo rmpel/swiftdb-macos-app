@@ -2,21 +2,6 @@
 
 SwiftDB now supports command-line arguments for automated testing and debugging of database connections.
 
-## Quick Test
-
-To test with your Local MySQL socket connection, run:
-
-```bash
-./test-socket-connection.sh
-```
-
-This will build and launch the app with the following configuration:
-- **Socket**: `/Users/rmpel/Library/Application Support/Local/run/EqiyRCcBh/mysql/mysqld.sock`
-- **User**: `root`
-- **Password**: `root`
-- **Database**: `local`
-- **Type**: `mysql`
-
 ## Available CLI Arguments
 
 | Argument | Description | Example |

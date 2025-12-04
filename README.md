@@ -8,13 +8,12 @@ A full-featured database management application for macOS, built with SwiftUI.
 - **Multiple Connection Types**:
   - TCP/IP connections
   - Unix socket connections
-  - SSH tunnels with TCP
-  - SSH tunnels with sockets
+  - SSH tunnels (TCP)
 
 - **Database Support**:
-  - MySQL
-  - PostgreSQL
-  - SQLite
+  - MySQL (via MySQLNIO)
+  - PostgreSQL (via PostgresNIO)
+  - SQLite (via SQLite.swift)
 
 - **SSH Authentication**:
   - System SSH config (`~/.ssh/config`) integration
@@ -173,20 +172,36 @@ Simply select "System SSH Config" as the authentication method and enter "myserv
 
 The app now uses **real database connectivity** - it will connect to actual MySQL and PostgreSQL servers and execute real queries.
 
+## Implemented Features
+
+### Table Editing
+- In-place cell editing (double-click cells)
+- Large content editor for long text fields
+- Pending changes tracking with orange highlighting
+- Commit/rollback functionality
+- UPDATE statement generation with proper WHERE clauses
+
+### Data Management
+- Column-based filtering with multiple operators (equals, contains, starts with, etc.)
+- Column sorting (ascending/descending)
+- Pagination with customizable page sizes (10-500 rows)
+- Resizable columns with persistent width storage
+- Zebra striping for improved readability
+
+### Connection Features
+- Dynamic SSH tunnel port allocation (no hardcoded ports)
+- Comprehensive activity logging with color-coded messages
+- CLI arguments support for automated testing
+- File browser for SQLite databases and SSH keys
+
 ## Current Limitations
 
-### SQLite Support
-SQLite support is not yet implemented. Only MySQL and PostgreSQL are currently supported.
-
-### SSH Password Authentication
-The current SSH tunnel implementation works best with key-based authentication or SSH agent. For password authentication, you may need to integrate with a library like [NMSSH](https://github.com/NMSSH/NMSSH) or use `expect` scripts.
-
 ### Advanced Features Not Yet Implemented
-- Table data editing (INSERT/UPDATE/DELETE via UI)
 - Query result export (CSV, JSON, etc.)
 - Database schema diffing
 - Query history persistence
 - Multiple simultaneous connections
+- Foreign keys and indexes display (temporarily disabled due to MySQLNIO limitations)
 
 ## Contributing
 

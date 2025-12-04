@@ -92,3 +92,4 @@ iOSInjectionProject/
 # Project-specific
 issues/
 *.backup
+test-socket-connection.sh
